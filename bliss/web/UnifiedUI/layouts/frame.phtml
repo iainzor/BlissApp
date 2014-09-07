@@ -1,0 +1,66 @@
+<?php
+/* @var $app \Bliss\Application */
+$app = $this->getApplication();
+$config = $app->config();
+$request = $app->getRequest();
+$buildNum = $app->build()->get("number", 1);
+$exception = $this->exception;
+
+$assets = \Assets\Module::container();
+$navigation = \System\Module::navigation();
+$navigation->getPages()->sort(function($pageA, $pageB) {
+	$orderA = $pageA->getOrder();
+	$orderB = $pageB->getOrder();
+	
+	if ($orderA === $orderB) {
+		return strcmp($pageA->getTitle(), $pageB->getTitle());
+	} else {
+		return $orderA < $orderB ? -1 : 1;
+	}
+});
+?>
+
+<!DOCTYPE HTML>
+<html lang="en" ng-app="app" ng-controller="RootCtrl">
+	<head>
+		<base href="<?=$request->getBaseUrl()?>">
+
+		<meta charset="utf-8">
+		<meta name="fragment" content="!">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<title ng-bind="pageTitle"><?=$config->title?><?=$config->subtitle ? " - ". $config->subtitle : null?></title>
+
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,700">
+		<link rel="stylesheet" type="text/css" href="./assets/all.<?=$buildNum?>.css">
+	</head>
+	<body class="<?=$this->getAttribute(\UnifiedUI\UI::BODY_CLASS)?>" ng-class="{'nav-open':navOpen, 'breadcrumb-open':breadcrumbOpen, 'fullscreen':fullscreen, 'sidebar-hidden':!sidebarVisible}">
+		<div id="page-loader" ng-class="{visible:pageLoading}">
+			<div class="loading loading-inverse"></div>
+		</div>
+		
+		<div id="app-container" style="display: none;">
+			<?php echo $this->getContent(); ?>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/<?=$config->angular->version?>/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/<?=$config->angular->version?>/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/<?=$config->angular->version?>/angular-sanitize.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/<?=$config->angular->version?>/angular-resource.min.js"></script>
+		
+		<script src="./assets/all.<?=$buildNum?>.js"></script>
+		<script>
+			app.title = "<?=$config->title?>";
+			app.subtitle = "<?=$config->subtitle?>";
+			app.navigation = <?=json_encode($navigation->toArray())?>;
+			
+			angular.element(window).on("load", function() {
+				document.getElementById("app-container").style.display = "block";
+			});
+		</script>
+		<?php echo $this->renderArea(\UnifiedUI\UI::AREA_SCRIPTS); ?>
+	</body>
+</html>

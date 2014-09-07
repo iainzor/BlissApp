@@ -1,0 +1,18 @@
+.theme-light .dropdown-inverse .dropdown-menu {
+	background-color: #222;
+}
+	.theme-light .dropdown-inverse .dropdown-menu > li > a {
+		color: #4cf;
+	}
+	.theme-light .dropdown-inverse .dropdown-menu > li > a:hover {
+		background-color: #333;
+		color: #fff;
+	}
+	.theme-light .dropdown-inverse .dropdown-menu > li.divider {
+		margin: 5px 0;
+		background-color: #333;
+	}
+	.theme-light .dropdown-inverse .dropdown-menu > li.nav-header {
+		color: #ccc;
+		border-color: #333;
+	}

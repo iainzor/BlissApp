@@ -1,0 +1,40 @@
+#sidebar {
+	z-index: 1000;
+}
+#sidebar > .sidebar-container {
+	position: fixed;
+	top: 60px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	padding: 20px;
+	display: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: rgba(0,0,0,.75);
+}
+.nav-open #sidebar > .sidebar-container {
+	display: block;
+	background-color: rgba(0,0,0,.95);
+}
+.breadcrumb-open #sidebar > .sidebar-container {
+	top: 95px;
+}
+
+@media (min-width: 992px) {
+	#sidebar > .sidebar-container {
+		position: static;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		width: auto;
+		background-color: transparent;
+		padding: 0;
+		display: block;
+		overflow: visible;
+	}
+	.nav-open #sidebar > .sidebar-container {
+		display: block;
+		background-color: transparent;
+	}
+}

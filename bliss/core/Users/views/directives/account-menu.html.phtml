@@ -1,0 +1,55 @@
+<?php
+/* @var $module \Users\Module */
+$module = $this->application->getModule("users");
+?>
+<ul id="user-account" class="nav nav-pills" ng-controller="account.MenuCtrl">
+	<li class="dropdown account-dropdown" ng-if="account.isActive" bliss-dropdown>
+		<i class="arrow arrow-bottom-right-north"></i>
+		<a href="./account">
+			<img class="avatar" bliss-gravatar="account.params.gravatarHash" data-size="40">
+			<h4 class="nickname">
+				{{account.nickname}}
+				<small>{{account.email}}</small>
+			</h4>
+		</a>
+		<ul class="dropdown-menu pull-right">
+			<li>
+				<a href="./account">Account Overview</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="./account/profile">Edit Profile</a>
+			</li>
+			<li>
+				<a href="./account/password">Change Password</a>
+			</li>
+			<li>
+				<a href="./account/settings">Settings</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="./account/sign-out" target="_self">Sign Out</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown guest-dropdown" ng-if="!account.isActive && (acl.canSignIn || acl.canSignUp)" bliss-dropdown>
+		<i class="arrow arrow-bottom-right-north"></i>
+		<a href="javascript:void(0)">
+			<div class="avatar">
+				<i class="glyphicon glyphicon-user"></i>
+			</div>
+			<h4 class="nickname">
+				Hello, Guest
+				<small>Please sign in</small>
+			</h4>
+		</a>
+		<ul class="dropdown-menu pull-right">
+			<li ng-if="acl.canSignIn" class="sign-in">
+				<a href="./account/sign-in">Sign In</a>
+			</li>
+			<li ng-if="acl.canSignUp" class="sign-up">
+				<a href="./account/sign-up">Sign Up</a>
+			</li>
+		</ul>
+	</li>
+</ul>

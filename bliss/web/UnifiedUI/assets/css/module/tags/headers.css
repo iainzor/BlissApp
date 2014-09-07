@@ -1,0 +1,14 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Roboto", Arial, sans-serif;
+	margin-top: 0;
+}
+h1, h2, h3, h4 {
+	font-weight: 300;
+}
+
+p:not(.pull-right) + h1,
+p:not(.pull-right) + h2,
+p:not(.pull-right) + h3,
+p:not(.pull-right) + h4 {
+	margin-top: 20px;
+}

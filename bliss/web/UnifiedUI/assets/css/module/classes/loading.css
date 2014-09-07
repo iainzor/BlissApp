@@ -1,0 +1,41 @@
+.loading {
+	min-width: 41px;
+	min-height: 41px;
+	opacity: .75;
+	border-radius: 3px;
+}
+
+.loading-light {
+	background: #fff url("./modules/unified-ui/assets/img/loading-light.gif") 50% 50% no-repeat;
+}
+	.loading-light.plain {
+		background-color: transparent;
+	}
+
+.loading-inverse,
+.loading-dark {
+	background: #222 url("./modules/unified-ui/assets/img/loading-dark.gif") 50% 50% no-repeat;
+}
+
+.loading-text {
+	background-position: 20px 50%;
+	padding: 20px 20px 20px 70px;
+}
+.loading-text:hover {
+	opacity: 1;
+}
+.loading-text.loading-inverse {
+	color: #fff;
+}
+
+.loading-opaque {
+	opacity: 1;
+}
+
+.loading-centered {
+	margin-right: auto;
+	margin-left: auto;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}

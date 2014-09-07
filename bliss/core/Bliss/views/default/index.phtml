@@ -1,0 +1,7 @@
+<h1>Welcome to the Bliss Application Engine</h1>
+<?php foreach ($this->get("application")->modules() as $module): ?>
+<h3>
+	<?=$module->getName()?><br>
+	<small><?=$module->resolvePath()?></small>
+</h3>
+<?php endforeach; ?>

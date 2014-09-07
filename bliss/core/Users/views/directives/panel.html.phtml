@@ -1,0 +1,43 @@
+<div class="block block-light clickable" ng-click="location.path(user.path)" ng-if="!hideHeader">
+	<section class="section graphic">
+		<p>
+			<a href="./{{user.path}}">
+				<img class="avatar" bliss-gravatar="user.params.gravatarHash" data-size="500" bliss-image="user.params.gravatarHash">
+			</a>
+		</p>
+	</section>
+	<ul class="section nav nav-stacked">
+		<li ng-class="{active: location.path().match(user.path)}">
+			<a href="./{{user.path}}">
+				<h3 class="nickname">
+					<span class="nowrap">{{user.nickname}}</span>
+					<small class="nowrap">
+						{{user.firstName}} {{user.lastName}}
+					</small>
+					<small class="nowrap" ng-if="user.id === account.id && !hideEmail">
+						{{account.email}}
+					</small>
+				</h3>
+			</a>
+		</li>
+	</ul>
+</div>
+<nav class="block block-light" ng-if="!hideNav">
+	<ul class="section nav nav-lg nav-stacked" ng-if="user.id === account.id">
+		<li class="nav-header">
+			My Account
+		</li>
+		<li ng-class="{active: location.path().match('/account') && !location.path().match('/account/')}">
+			<a href="./account">Account Overview</a>
+		</li>
+		<li ng-class="{active: location.path().match('account/profile')}">
+			<a href="./account/profile">Edit Profile</a>
+		</li>
+		<li ng-class="{active: location.path().match('account/password')}">
+			<a href="./account/password">Change Password</a>
+		</li>
+		<li ng-class="{active: location.path().match('account/settings')}">
+			<a href="./account/settings">Settings</a>
+		</li>
+	</ul>
+</nav>

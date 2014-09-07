@@ -1,0 +1,45 @@
+<?php
+//$regions = \Bliss\DateTime\Region\Collection::generate();
+?>
+<div class="row">
+	<div class="col-md-3 col-sm-4" user-panel="account" hide-header="true"></div>
+	<div class="col-md-9 col-sm-8">
+		<form name="settingsForm" class="block block-light" ng-submit="save()">
+			<header class="section header">
+				<h1>Account Settings</h1>
+			</header>
+			<div class="alert alert-danger" ng-if="error">
+				{{error.message}}
+			</div>
+			<section class="section body">
+				<div class="form-group">
+					<label>Your Location</label>
+					<div class="row">
+						<div class="col-xs-6">
+							<select class="form-control" 
+									ng-model="account.params.regionId"
+									ng-options="region.id as region.title for region in regions">
+							</select>
+						</div>
+						<div class="col-xs-6" ng-if="region">
+							<select class="form-control" 
+									ng-model="account.params.timezone"
+									ng-options="timezone.id as (timezone.title +' ('+ timezone.offsetString +')') for timezone in region.timezones">
+							</select>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer class="section footer" ng-if="!settingsForm.$pristine">
+				<div class="row">
+					<div class="col-xs-6">
+						<input type="submit" class="btn btn-lg btn-primary btn-block" value="Save">
+					</div>
+					<div class="col-xs-6">
+						<input type="reset" class="btn btn-lg btn-danger btn-block" value="Cancel" ng-click="reset()">
+					</div>
+				</div>
+			</footer>
+		</form>
+	</div>
+</div>

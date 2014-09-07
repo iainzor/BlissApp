@@ -1,0 +1,32 @@
+<article class="block">
+	<header class="section header">
+		<ul class="nav nav-pills controls pull-right">
+			<li class="dropdown dropdown-inverse" bliss-dropdown>
+				<a href="javascript:void(0)">Filter by...</a>
+				<i class="arrow arrow-bottom-right-north"></i>
+				<ul class="dropdown-menu pull-right">
+					<li ng-repeat="field in filter.fields">
+						<a href="javascript:void(0)" ng-click="addField(field)">
+							{{field.label}}
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3>Filter</h3>
+	</header>
+	<section class="section body" ng-if="fields.length">
+		<div class="form-group" ng-repeat="field in fields">
+			<label class="control-label">{{field.label}}</label>
+			<input type="text" class="form-control" ng-model="field.value">
+		</div>
+	</section>
+	<section class="section body extra" ng-if="!fields.length">
+		<p class="text-center text-muted">
+			No filters have been added
+		</p>
+	</section>
+	<footer class="section footer compact">
+		<button class="btn btn-primary btn-block" ng-click="apply()">Apply Filters</button>
+	</footer>
+</article>

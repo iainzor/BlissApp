@@ -1,0 +1,4 @@
+.dropdown-pagination > .dropdown-menu {
+	min-width: 0;
+	text-align: right;
+}

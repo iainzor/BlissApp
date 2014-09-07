@@ -1,0 +1,30 @@
+.block.block-inverse {}
+
+	.block.block-inverse > .section {
+		background-color: rgba(0,0,0,.5);
+		border-color: rgba(255,255,255,.15);
+		color: #fff;
+	}
+	
+	.block.block-inverse h1,
+	.block.block-inverse h2,
+	.block.block-inverse h3 {
+		color: #fff;
+	}
+	
+	.block.block-inverse a {
+		color: #4cf;
+	}
+	.block.block-inverse .dropdown-menu > li > a {
+		/*color: #2790b0;*/
+	}
+	
+	
+/* Nav Classes */
+.block-inverse .nav > li > a {
+	color: #fff;
+}
+.block-inverse .nav > li.active > a {
+	background-color: #fff;
+	color: #2790b0;
+}

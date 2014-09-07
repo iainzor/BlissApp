@@ -1,0 +1,12 @@
+<?php
+/* @var $userSession \Users\Session\Session */
+$userSession = $this->userSession;
+$user = $userSession->getUser();
+?>
+
+<script>
+app.account = <?=!empty($user) ? json_encode($user->toArray()) : "false"?>;
+if (app.account && angular.isArray(app.account.params)) {
+	app.account.params = {};
+}
+</script>

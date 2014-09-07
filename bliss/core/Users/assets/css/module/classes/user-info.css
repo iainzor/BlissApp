@@ -1,0 +1,20 @@
+.user-info {}
+	
+	.user-info > .avatar {
+		float: left;
+		margin-right: 10px;
+	}
+		.user-info > .avatar img {
+			border-radius: 3px;
+		}
+	
+	.user-info > p {
+		margin-bottom: 0;
+	}
+	
+	.user-info.compact > .avatar {
+		margin-right: 0;
+	}
+	.user-info.compact > p {
+		display: none;
+	}

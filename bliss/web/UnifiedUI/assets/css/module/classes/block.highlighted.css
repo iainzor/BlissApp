@@ -1,0 +1,21 @@
+.block.highlighted,
+.block.highlighted.info {
+	box-shadow: 0 -5px 0 #4cf,
+				0 2px 2px rgba(0,0,0,.1);
+}
+.block.highlighted.danger {
+	box-shadow: 0 -5px 0 #d9534f,
+				0 2px 2px rgba(0,0,0,.1);
+}
+.block.highlighted.success {
+	box-shadow: 0 -5px 0 #5cb85c,
+				0 2px 2px rgba(0,0,0,.1);
+}
+.block.highlighted.warning {
+	box-shadow: 0 -5px 0 #f0ad4e,
+				0 2px 2px rgba(0,0,0,.1);
+}
+.block.highlighted.default {
+	box-shadow: 0 -5px 0 #777,
+				0 2px 2px rgba(0,0,0,.1);
+}

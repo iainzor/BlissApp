@@ -1,0 +1,6 @@
+.clickable {
+	cursor: pointer;
+}
+	.clickable a:hover {
+		text-decoration: none;
+	}

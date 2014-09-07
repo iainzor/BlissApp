@@ -1,0 +1,11 @@
+ul.controls {
+	padding: 0;
+	list-style: none;
+}
+	ul.controls > li {
+		display: inline-block;
+		margin-right: 5px;
+	} 
+	ul.controls > li:last-child {
+		margin-right: 0;
+	}

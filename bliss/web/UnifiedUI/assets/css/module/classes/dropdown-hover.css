@@ -1,0 +1,7 @@
+.dropdown-hover:hover {}
+	.dropdown-hover:hover > .dropdown-menu {
+		display: block;
+	}
+	.dropdown-hover:hover > .arrow {
+		opacity: 1;
+	}

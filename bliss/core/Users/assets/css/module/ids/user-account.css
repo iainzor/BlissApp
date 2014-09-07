@@ -1,0 +1,65 @@
+#user-account {
+	text-align: right;
+	white-space: nowrap;
+}
+	#user-account .nickname {
+		display: none;
+		color: #4cf;
+	}
+	
+	#user-account .avatar {
+		float: right;
+		width: 40px;
+		height: 40px;
+		display: block;
+		border-radius: 3px;
+		background: #fff url("./modules/unified-ui/assets/img/loading-light.gif") 50% 50% no-repeat;
+	}
+	
+	#user-account .dropdown {
+		margin-top: 0;
+	}
+		#user-account .dropdown > a {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			margin-top: 0;
+			height: 60px;
+			line-height: inherit;
+		}
+		#user-account .dropdown > .arrow-bottom-right-north {
+			margin-right: 15px;
+		}
+		#user-account .dropdown > .dropdown-menu {
+			margin-right: 15px;
+		}
+	
+	#user-account .guest-dropdown > a {
+		display: block;
+		color: #fff;
+		height: 40px;
+	}
+	#user-account .guest-dropdown .avatar {
+		background: #4cf;
+		border-radius: 3px;
+		max-width: none;
+		text-align: center;
+		font-size: 30px;
+		line-height: 40px;
+	}
+		#user-account .guest-dropdown .avatar > i {
+			height: 40px;
+			line-height: 40px;
+		}
+	
+	
+		
+@media (min-width: 768px) {
+	#user-account .nickname {
+		display: block;
+		margin: 0 50px 0 0;
+	}
+		#user-account .nickname > small {
+			margin-top: 5px;
+			display: block;
+		}
+}

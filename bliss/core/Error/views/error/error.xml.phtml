@@ -1,0 +1,20 @@
+<?php
+use Bliss\Console;
+
+/* @var \Exception $exception */
+$exception = $this->getAttribute("exception");
+$config = $this->application->config();
+?>
+
+<response>
+	<result>Error</result>
+	<message><?=$exception->getMessage()?></message>
+	
+	<?php if ($config->errorHandler->showErrorTrace === true): ?>
+	<trace><![CDATA[<?=$exception->getTraceAsString()?>]]></trace>
+	<?php endif; ?>
+	
+	<?php if ($config->errorHandler->showConsole === true): ?>
+	<console><![CDATA[<?=Console::toString()?>]]></console>
+	<?php endif; ?>
+</response>

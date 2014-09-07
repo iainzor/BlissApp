@@ -1,0 +1,24 @@
+#page-loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	visibility: hidden;
+}
+#page-loader.visible {
+	z-index: 1000;
+	visibility: visible;
+}
+	#page-loader > .loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -50px;
+		margin-left: -50px;
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		box-shadow: 0 2px 5px rgba(0,0,0,.25);
+	}

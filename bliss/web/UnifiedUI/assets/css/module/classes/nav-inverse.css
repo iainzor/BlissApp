@@ -1,0 +1,10 @@
+.nav-inverse {}
+
+	.nav-inverse a {
+		color: #4cf;
+	}
+	.nav-inverse > li > a:hover,
+	.nav-inverse > li:hover > a {
+		color: #fff;
+		background-color: rgba(255,255,255,.1);
+	}

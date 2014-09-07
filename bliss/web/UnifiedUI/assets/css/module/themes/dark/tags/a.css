@@ -1,0 +1,3 @@
+.theme-dark a:not(.btn):not(.label):not(.alert-link) {
+	color: #4cf;
+}

@@ -1,0 +1,48 @@
+body {
+	padding: 70px 0 0 0;
+	font-family: "Roboto", Arial, sans-serif;
+	width: 100%;
+	overflow-x: hidden;
+	word-wrap: break-word;
+	background: #ddd;
+}
+
+body.nav-open {
+	overflow: hidden;
+}
+
+body.breadcrumb-open {
+	padding-top: 110px;
+}
+
+body.fullscreen {
+	padding-top: 20px !important;
+}
+
+@media (min-width: 768px) {
+	body {
+		padding-top: 80px;
+		padding-bottom: 20px;
+	}
+	body.breadcrumb-open {
+		padding-top: 115px;
+	}
+}
+
+@media (min-width: 992px) {
+	body {
+		overflow-x: auto;
+		transition: padding .2s;
+		-moz-transition: padding .2s;
+		-webkit-transition: padding .2s;
+		background-color: #ddd;
+	}
+	body.fullscreen {
+		transition: none;
+		-moz-transition: none;
+		-webkit-transition: none;
+	}
+	body.nav-open {
+		overflow: auto;
+	}
+}

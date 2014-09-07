@@ -1,0 +1,185 @@
+<?php
+use Bliss\Navigation\Page\Page as NavPage;
+
+/* @var $app \Bliss\Application */
+$app = $this->getApplication();
+$config = $app->config();
+$request = $app->getRequest();
+$buildNum = $app->build()->get("number", 1);
+$exception = $this->exception;
+?>
+
+<header id="header">
+	<div class="container header-bar">
+		<?php echo $this->renderArea(\UnifiedUI\UI::AREA_HEADER_TOP); ?>
+		
+		<a class="nav-toggle" href="javascript:void(0)" ng-click="toggleNav()" ng-if="sidebarVisible">
+			<i class="icon-bar"></i>
+			<i class="icon-bar"></i>
+			<i class="icon-bar"></i>
+		</a>
+		<h1 class="logo">
+			<a href="./">
+				{{appTitle}}
+				<small ng-if="appSubtitle">{{appSubtitle}}</small>
+			</a>
+		</h1>
+		<nav class="menu">
+			<?php echo $this->renderArea(\UnifiedUI\UI::AREA_HEADER_MENU); ?>
+		</nav>
+		
+		<?php echo $this->renderArea(\UnifiedUI\UI::AREA_HEADER_BOTTOM); ?>
+	</div>
+	<nav id="breadcrumb" class="container" ng-if="breadcrumb">
+		<ol class="breadcrumb">
+			<li ng-repeat="crumb in breadcrumb" ng-class="{active:$last}">
+				<a href="./{{crumb.path}}" ng-if="!$last">{{crumb.title}}</a>
+				<span ng-if="$last">{{crumb.title}}</span>
+			</li>
+		</ol>
+	</nav>
+</header>
+
+<?php echo $this->renderArea(\UnifiedUI\UI::AREA_AFTER_HEADER); ?>
+
+<div class="container" id="body-container">
+	<div class="row" id="body-row">
+		<?php
+		$sidebarClass = $this->getAttribute(\UnifiedUI\UI::AREA_SIDEBAR_CLASS, "col-md-2");
+		?>
+		<div class="<?=$sidebarClass?>" id="sidebar" ng-if="!fullscreen && sidebarVisible">
+			<aside class="sidebar-container">
+				<div class="row">
+					<div class="col-sm-4 col-md-12">
+						<?php echo $this->renderArea(\UnifiedUI\UI::AREA_SIDEBAR_TOP); ?>
+						
+						<nav id="nav" class="block" ng-if="navigation && navigation.pages.length > 0" ng-controller="unified-ui.NavigationCtrl">
+							<ul class="section nav nav-stacked nav-lg">
+								<li ng-repeat="page in navigation.pages" 
+									ng-class="{
+										active: isActive(page),
+										'dropdown dropdown-inverse dropdown-hover': page.pages.length > 0
+									}"
+								>
+									<i class="arrow arrow-inverse" ng-if="page.pages.length > 0"></i>
+									<a href="./{{page.path}}" ng-class="{'hidden-xs hidden-sm': page.pages.length > 0}">{{page.title}}</a>
+									<a href="javascript:void(0)" class="visible-xs visible-sm" ng-if="page.pages.length > 0">{{page.title}}</a>
+									<ul class="dropdown-menu" ng-if="page.pages.length > 0">
+										<li ng-repeat="subPage in page.pages"
+											ng-class="{
+												'nav-header': subPage.type=='<?=NavPage::TYPE_HEADER?>', 
+												'divider': subPage.type=='<?=NavPage::TYPE_DIVIDER?>',
+												'active': location.path()=='/'+subPage.path
+											}"
+											ng-switch on="subPage.type"
+										>
+											<span ng-switch-when="<?=NavPage::TYPE_HEADER?>">{{subPage.title}}</span>
+											<a ng-switch-when="<?=NavPage::TYPE_PAGE?>" href="./{{subPage.path}}">{{subPage.title}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+						
+						<?php echo $this->renderArea(\UnifiedUI\UI::AREA_SIDEBAR_BOTTOM); ?>
+					</div>
+				</div>
+			</aside>
+		</div>
+		
+		<?php
+		$contentClass = $this->getAttribute(\UnifiedUI\UI::AREA_CONTENT_CLASS, "col-md-10");
+		?>
+		<div id="content" ng-class="{'<?=$contentClass?>':!fullscreen && sidebarVisible, 'col-md-12':fullscreen || !sidebarVisible}">
+			<div id="viewContent">
+				<?=$this->getContent()?>
+			</div>
+			
+			<div ng-if="!error && !viewError">
+				<div ng-view></div>
+			</div>
+
+			<div id="error" class="block" ng-show="error" ng-cloak>
+				<section class="section body" ng-if="error.code !== 404">
+					<h2>Something went terribly wrong</h2>
+					<h4>{{error.message}}</h4>
+				</section>
+				<section class="section body" ng-if="error.code === 404">
+					<h1>404</h1>
+					<h3>The page you are looking for could not be found!</h3>
+				</section>
+				<footer class="section footer">
+					<a href="./" class="btn btn-lg btn-success">Return to Safety</a>
+				</footer>
+			</div>
+
+			<?php if ($app->errorHandler()->showErrorTrace() === true): ?>
+			<div class="block" ng-if="error.trace">
+				<div class="section header">
+					<h3>Error Trace</h3>
+				</div>
+				<table class="section table table-striped table-bordered text-code">
+					<tr ng-repeat="log in error.trace">
+						<td>
+							<dl>
+								<dt>File</dt>
+								<dd>{{log.file || "N/A"}}</dd>
+
+								<dt>Line</dt>
+								<dd>{{log.line || "N/A"}}</dd>
+
+								<dt>Class</dt>
+								<dd>{{log.class || "N/A"}}</dd>
+
+								<dt>Function</dt>
+								<dd>{{log.function || "N/A"}}</dd>
+							</dl>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<?php endif; ?>
+
+			<?php if ($app->errorHandler()->showConsole() === true): ?>
+			<div class="block" ng-if="error.console">
+				<div class="section header">
+					<h3>Console</h3>
+				</div>
+				<table class="section table table-striped table-bordered text-code">
+					<tr ng-repeat="log in error.console">
+						<td width="1" class="text-right">{{$index+1}}.</td>
+						<td ng-bind-html="log.message"></td>
+					</tr>
+				</table>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+
+<?php
+// Render the template according to the current URI
+
+/* @var $request \Bliss\Request */
+$module = $request->getParam("module");
+$controller = $request->getParam("controller");
+$action = $request->getParam("action");
+$path = "";
+
+if (isset($module)) {
+	$path .= $module ."/";
+}
+if (isset($controller)) {
+	$path .= $controller;
+	if (isset($action)) {
+		$path .= "/{$action}";
+	} else {
+		$path .= "/index";
+	}
+}
+if (!empty($path)):
+?>
+<script type="text/ng-template" id="./<?=$path?>.html">
+	<?php echo $this->findAndRenderPartial("{$path}.html", true); ?>
+</script>
+<?php endif; ?>

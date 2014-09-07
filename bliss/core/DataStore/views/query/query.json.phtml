@@ -1,0 +1,6 @@
+<?php
+echo json_encode([
+	"results" => $this->results->toArray(),
+	"query" => $this->query->toArray(),
+	"filter" => $this->filter->toArray()
+]);

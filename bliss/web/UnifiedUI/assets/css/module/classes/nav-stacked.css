@@ -1,0 +1,34 @@
+.nav-stacked > li {
+	border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.nav-stacked > li + li {
+	margin-top: 0;
+}
+.nav-stacked > li:first-child {
+	padding-top: 5px;
+}
+	.nav-stacked > li.dropdown:first-child > .arrow,
+	.nav-stacked > li.dropdown:first-child > .dropdown-menu {
+		margin-top: 5px;
+	}
+	
+.nav-stacked > li:last-child {
+	border-bottom: none;
+	padding-bottom: 5px;
+}
+	.nav-stacked > li > a {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+		.nav-stacked > li > a > .description {
+			display: block;
+		}
+		
+		
+.nav-stacked h3 small {
+	font-size: 16px;
+	line-height: 20px
+}
+.nav-stacked h3 small:first-of-type {
+	margin-top: 5px;
+}

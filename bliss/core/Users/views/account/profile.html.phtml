@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-3 col-sm-4" user-panel="account" hide-header="true"></div>
+	<form class="col-md-9 col-sm-8" name="profile" ng-submit="save()">
+		<div class="block block-light">
+			<header class="section header">
+				<h1>Edit Profile</h1>
+			</header>
+			<section class="section body">
+				<h3>Basic Information</h3>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" ng-model="account.firstName">
+						</div>
+						<div class="form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" ng-model="account.lastName">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label>Display Name</label>
+							<input type="text" class="form-control" ng-model="account.nickname" required>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section class="section body">
+				<h3>Profile Picture</h3>
+				<div class="form-group">
+					<label>Gravatar Email</label>
+					<input type="email" class="form-control" ng-model="account.params.gravatarEmail" name="account[params][gravatarEmail]">
+					<p class="help-block">
+						<small>
+							<a href="http://gravatar.com" target="_blank">Click here</a> to setup your free Gravatar account
+						</small>
+					</p>
+				</div>
+			</section>
+			
+			<footer class="section footer compact" ng-if="!profile.$pristine">
+				<div class="row">
+					<div class="col-xs-6">
+						<input type="submit" class="btn btn-block btn-lg btn-primary" value="Save">
+					</div>
+					<div class="col-xs-6">
+						<input type="button" class="btn btn-block btn-lg btn-danger" value="Cancel" ng-click="reset()">
+					</div>
+				</div>
+			</footer>
+		</div>
+	</form>
+</div>

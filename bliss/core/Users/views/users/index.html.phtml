@@ -1,0 +1,37 @@
+<?php
+use Acl\Acl,
+	Users\User;
+
+$user = \Users\Module::session()->getUser();
+?>
+<div class="theme-dark">
+	<div class="block">
+		<header class="section header">
+			<h1>All Users</h1>
+		</header>
+<?php if ($user->isAllowed(User::RESOURCE_NAME, Acl::CREATE)): ?>
+		<nav class="section extra compact">
+			<ul class="controls">
+				<li>
+					<a href="./users/new" class="btn btn-success btn-sm">
+						<i class="glyphicon glyphicon-plus"></i>
+						New User
+					</a>
+				</li>
+			</ul>
+		</nav>
+<?php endif; ?>
+	</div>
+</div>
+
+<div class="row users" bliss-grid="users">
+	<article class="user user-micro col-sm-3 col-xs-6 col-xl-2" 
+			 title="{{user.nickname}}"
+			 ng-repeat="user in users" 
+			 ng-click="location.path(user.path)"
+			 user-panel="user" 
+			 account="account" 
+			 hide-nav="true" 
+			 hide-email="true">
+	</article>
+</div>

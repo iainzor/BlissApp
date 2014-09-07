@@ -1,0 +1,9 @@
+#breadcrumb.theme-light {}
+
+	#breadcrumb.theme-light > .breadcrumb > .active,
+	#breadcrumb.theme-light > .breadcrumb > li + li:before {
+		color: #666;
+	}
+	#breadcrumb.theme-light a {
+		color: #2790b0;
+	}

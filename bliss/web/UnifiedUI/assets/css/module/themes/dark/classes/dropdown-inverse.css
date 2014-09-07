@@ -1,0 +1,25 @@
+.theme-dark .dropdown-inverse .dropdown-menu {
+	background-color: #fff;
+	color: #222;
+}
+	.theme-dark .dropdown-inverse .dropdown-menu a {
+		color: #2790b0 !important;
+	}
+	.theme-dark .dropdown-inverse .dropdown-menu a:hover,
+	.theme-dark .dropdown-inverse .dropdown-menu > li.active > a {
+		background-color: #eee;
+		color: #222;
+	}
+
+	.theme-dark .dropdown-inverse .dropdown-menu > li.nav-header {
+		border-color: #eee;
+	}
+	
+	.theme-dark .dropdown-inverse .dropdown-menu > li.divider {
+		background-color: #eee;
+	}
+	
+
+.theme-dark .dropdown-inverse > .arrow {
+	border-color: #fff;
+}

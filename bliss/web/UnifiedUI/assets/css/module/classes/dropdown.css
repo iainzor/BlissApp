@@ -1,0 +1,17 @@
+.dropdown > .arrow {
+	opacity: .5;
+}
+.dropdown.open > .arrow {
+	opacity: 1;
+}
+
+.dropdown.right-justified {
+	padding-right: 10px;
+}
+.dropdown.left-justified {
+	padding-left: 10px;
+}
+
+.dropdown a:hover {
+	text-decoration: none;
+}

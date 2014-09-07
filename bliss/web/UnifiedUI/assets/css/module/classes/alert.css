@@ -1,0 +1,22 @@
+.alert {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.alert-danger {
+	background-color: #a94442;
+	color: #fff;
+}
+.alert-success {
+	background-color: #3c763d;
+	color: #dff0d8;
+}
+	.alert-success .alert-link {
+		color: #fff;
+	}
+
+	.alert-block > p {
+		margin-bottom: 10px;
+	}
+	.alert-block > p:last-child {
+		margin-bottom: 0;
+	}

@@ -1,0 +1,66 @@
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255,255,255,.5);
+	z-index: 100;
+	padding: 20px;
+	border-radius: 3px;
+	transition: all .2s;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+}
+	.overlay > h1,
+	.overlay > h2,
+	.overlay > h1 small,
+	.overlay > h2 small {
+		color: #555 !important;
+		text-shadow: 0 0 10px rgba(255,255,255,.5),
+					 0 2px 2px rgba(0,0,0,.15);
+		transition: all .2s;
+		-webkit-transition: all .2s;
+		-moz-transition: all .2s;
+	}
+
+.overlay.overlay-inverse {
+	background-color: rgba(0,0,0,.25);
+}
+	.overlay-inverse > h1,
+	.overlay-inverse > h2,
+	.overlay-inverse > h1 small,
+	.overlay-inverse > h2 small {
+		color: #fff;
+		text-shadow: 0 2px 2px rgba(0,0,0,.25),
+					 0 0 10px rgba(0,0,0,.5);
+	}
+	
+.overlay.transparent-on-hover:hover {
+	background-color: transparent;
+}
+
+.overlay.opaque-on-hover {
+	background-color: transparent;
+}
+.overlay.opaque-on-hover:hover {
+	background-color: rgba(255,255,255,.25);
+}
+.overlay.overlay-inverse.opaque-on-hover:hover {
+	background-color: rgba(0,0,0,.25);
+}
+
+
+/* Special Cases */
+.overlay .btn {
+	box-shadow: 0 0 10px rgba(0,0,0,.25);
+	background-color: rgba(255,255,255,.85);
+	color: #555;
+	border: none;
+	transition: all .2s;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+}
+.overlay.opaque-on-hover:hover .btn {
+	background-color: #fff;
+}

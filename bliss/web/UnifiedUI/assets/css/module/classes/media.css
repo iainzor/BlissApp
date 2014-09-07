@@ -1,0 +1,27 @@
+.media {
+	position: relative;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.media-padded {
+	padding: 3px;
+}
+	.media img { width: 100%; max-width: 100%; }
+	
+	.media > .media-item {
+		position: relative;
+		z-index: 0;
+	}
+	
+	.media > .media-text {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(255,255,255,.9);
+		padding: 20px;
+	}
+		.media > .media-text > :last-child {
+			margin-bottom: 0;
+		}

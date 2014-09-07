@@ -1,0 +1,13 @@
+<article class="block">
+	<header class="section header">
+		<h1>Hello World</h1>
+	</header>
+	<ul>
+		<?php foreach ($this->get("app")->modules() as $module): ?>
+		<li>
+			<?=$module->getName()?>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+	<pre><?php print_r($this->get("request")->getParams()); ?></pre>
+</article>

@@ -1,0 +1,62 @@
+<form ng-submit="submit()">
+	<div class="block plain">
+		<a href="javascript:void(0)" class="btn btn-default btn-sm" 
+				ng-class="{active:filterOpen}"
+				ng-click="filterOpen=!filterOpen">
+			<span ng-if="filterOpen">
+				<i class="glyphicon glyphicon-remove"></i>
+				Close Filter
+			</span>
+			<span ng-if="!filterOpen">
+				<i class="glyphicon glyphicon-filter"></i>
+				Open Filter
+			</span>
+		</a>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-3" ng-if="filterOpen">
+			<datastore-filter filter="filter"></datastore-filter>
+		</div>
+		<div ng-class="{'col-sm-9':filterOpen, 'col-sm-12':!filterOpen}">
+			<article class="block" ng-if="results.length > 0">
+				<header class="section header">
+					<p class="lead">
+						Showing {{query.totalResults | number}} of {{query.totalCalcResults | number}}
+						<ng-pluralize count="query.totalCalcResults" when="{'1':'result','other':'results'}"></ng-pluralize>
+					</p>
+				</header>
+				<table class="section table table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="text-right" width="1">#</th>
+							<th ng-repeat="field in filter.fields">{{field.label}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="result in results">
+							<td class="text-right">{{$index+1+query.resultOffset}}</td>
+							<td ng-repeat="field in filter.fields">
+								{{result[field.alias]}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+			
+			<article class="block" ng-if="!results.length">
+				<section class="section body">
+					<div class="loading loading-light"></div>
+				</section>
+			</article>
+			
+			<article class="block" ng-if="!results.length && !isLoading">
+				<section class="section body extra">
+					<p class="lead text-center text-muted">
+						No results could be found
+					</p>
+				</section>
+			</article>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,15 @@
+.theme-dark .nav > li > a {
+	color: #fff !important;
+}
+.theme-dark .nav > li > small,
+.theme-dark .nav > li.active > small {
+	color: #ccc;
+}
+.theme-dark .nav > li:not(.active) > a:hover {
+	background-color: rgba(255,255,255,.05);
+}
+.theme-dark .nav > li.active > a,
+.theme-dark .nav > li.open > a {
+	background-color: rgba(255,255,255,.05);
+	color: #4cf !important;
+}

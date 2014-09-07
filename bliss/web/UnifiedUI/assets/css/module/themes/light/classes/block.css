@@ -1,0 +1,37 @@
+.theme-light .block {
+	color: #222;
+	box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+.theme-light .block.block-plain {
+	box-shadow: none;
+}
+	.theme-light .block > .section {
+		border-color: #eee;
+		background-color: #fff;
+	}
+	.theme-light .block > .section.section-inverse {
+		background-color: rgba(0,0,0,.75);
+		color: #eee;
+		border: none;
+	}
+	
+	.theme-light .block h1,
+	.theme-light .block h2,
+	.theme-light .block h3 {
+		color: #2790b0;
+	}
+	
+	.theme-light .block .section-inverse h1,
+	.theme-light .block .section-inverse h2,
+	.theme-light .block .section-inverse h3,
+	.theme-light .block .section-inverse h4 {
+		color: #eee;
+	}
+		
+	.theme-light .block > .header {
+		color: #666;
+	}
+	
+	.theme-light .block > .extra {
+		background-color: whitesmoke;
+	}

@@ -1,0 +1,115 @@
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,.75);
+	color: #fff;
+	z-index: 1001;
+}
+body.nav-open #header {
+	background-color: rgba(0,0,0,.95);
+}
+	#header > .container {
+		padding-right: 0;
+	}
+	#header .logo {
+		margin: 0;
+		font-size: 22px;
+		display: inline-block;
+		line-height: 60px;
+	}
+		#header .logo a {
+			color: #fff
+		}
+		#header .logo a:hover {
+			text-decoration: none;
+		}
+		
+		#header .logo small {
+			color: #eee;
+			margin-left: 8px;
+			display: inline-block;
+			border-left: 1px solid #444;
+			padding-left: 10px;
+		}
+	
+	#header .nav-toggle {
+		display: inline-block;
+		float: right;
+		width: 30px;
+		height: 60px;
+		padding-left: 15px;
+		padding-right: 15px;
+		box-sizing: content-box;
+	}
+	body.nav-open #header .nav-toggle {
+		background-color: rgba(255,255,255,.05);
+	}
+		#header .nav-toggle .icon-bar {
+			height: 6px;
+			margin-bottom: 6px;
+			border-radius: 3px;
+			background-color: #fff;
+		}
+		#header .nav-toggle .icon-bar:first-child {
+			margin-top: 15px;
+		}
+		body.nav-open #header .nav-toggle .icon-bar {
+			opacity: 1;
+		}
+	
+	#header > .header-bar {
+		height: 60px;
+		white-space: nowrap;
+		position: relative;
+	}
+	#header > .header-bar > .menu {
+		position: absolute;
+		top: 0;
+		right: 55px;
+	}
+	.sidebar-hidden #header > .header-bar > .menu {
+		right: 0;
+	}
+		#header > .header-bar > .menu .nav-pills > li {
+			border-right: 1px solid rgba(255,255,255,.1);
+		}
+		#header > .header-bar > .menu .nav-pills > li:last-child {
+			border-right: none;
+		}
+			#header > .header-bar > .menu .nav-pills > li > a {
+				padding: 10px 15px;
+				box-sizing: content-box;
+				line-height: 40px;
+				border-radius: 0;
+				height: 40px;
+			}
+			
+			#header .menu .nav-pills > li.dropdown > .arrow {
+				margin-bottom: 10px;
+			}
+			#header .menu .nav-pills > li.dropdown > .dropdown-menu {
+				margin-top: -10px;
+			}
+			
+		#header > .header-bar .nav .open > a {
+			background-color: rgba(0,0,0,.25);
+		}
+	
+.fullscreen #header {
+	display: none;
+}
+	
+@media (min-width: 992px) {
+	#header .nav-toggle {
+		display: none;
+	}
+	body.nav-open #header {
+		background-color: rgba(0,0,0,.75);
+	}
+	
+	#header > .header-bar > .menu {
+		right: 0px;
+	}
+}

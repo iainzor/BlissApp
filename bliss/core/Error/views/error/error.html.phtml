@@ -1,0 +1,79 @@
+<?php
+/* @var $app \Bliss\Application\Container */
+$app = $this->get("application");
+
+
+/* @var $exception \Exception */
+$exception = $this->get("exception");
+$code = isset($exception) ? $exception->getCode() : 500;
+$message = isset($exception) ? $exception->getMessage() : "An unknown error occurred";
+$module = $app->modules(\Error\Module::NAME);
+$showErrorTrace = $module->getParam("showErrorTrace", true);
+$showConsole = $module->getParam("showConsole", true);
+?>
+
+<div id="error" class="block block-light">
+	<?php if ($code !== 404): ?>
+	<section class="section body">
+		<h2>Something went terribly wrong</h2>
+		<h4><?=$message?></h4>
+	</section>
+	<?php else: ?>
+	<section class="section body">
+		<h1>404</h1>
+		<h3>The page you are looking for could not be found!</h3>
+		
+		<?php if ($showErrorTrace === true): ?>
+		<p><?=$message?></p>
+		<?php endif; ?>
+	</section>
+	<?php endif; ?>
+	<footer class="section footer">
+		<a href="./" class="btn btn-lg btn-success">Return to Safety</a>
+	</footer>
+</div>
+
+<?php if (isset($exception) && $showErrorTrace === true): ?>
+<div class="block block-light">
+	<div class="section header">
+		<h3>Error Trace</h3>
+	</div>
+	<table class="section table table-striped table-bordered text-code">
+		<?php foreach ($exception->getTrace() as $log): ?>
+		<tr>
+			<td>
+				<dl>
+					<dt>File</dt>
+					<dd><?=isset($log["file"]) ? $log["file"] : "N/A"?></dd>
+
+					<dt>Line</dt>
+					<dd><?=isset($log["line"]) ? $log["line"] : "N/A"?></dd>
+
+					<dt>Class</dt>
+					<dd><?=isset($log["class"]) ? $log["class"] : "N/A"?></dd>
+
+					<dt>Function</dt>
+					<dd><?=isset($log["function"]) ? $log["function"] : "N/A"?></dd>
+				</dl>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
+</div>
+<?php endif; ?>
+
+<?php if ($showConsole === true): ?>
+<div class="block block-light">
+	<div class="section header">
+		<h3>Console</h3>
+	</div>
+	<table class="section table table-striped table-bordered text-code">
+		<?php foreach (\Bliss\Console::toArray() as $i => $log): ?>
+		<tr>
+			<td width="1" class="text-right"><?=$i+1?>.</td>
+			<td><?=$log["message"]?></td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
+</div>
+<?php endif; ?>

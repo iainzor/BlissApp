@@ -1,0 +1,19 @@
+<?php
+use Bliss\Console;
+
+/* @var \Exception $exception */
+$exception = $this->getAttribute("exception");
+?>
+
+<response>
+	<result>Error</result>
+	<message>404 Not Found</message>
+	
+	<?php if ($config->errorHandler->showErrorTrace === true): ?>
+	<trace><![CDATA[<?=$exception->getTraceAsString()?>]]></trace>
+	<?php endif; ?>
+	
+	<?php if ($config->errorHandler->showConsole === true): ?>
+	<console><![CDATA[<?=Console::toString()?>]]></console>
+	<?php endif; ?>
+</response>

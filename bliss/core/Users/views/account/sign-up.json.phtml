@@ -1,0 +1,12 @@
+<?php
+/* @var $user \Users\User */
+$user = $this->user;
+
+/* @var $results \Bliss\Validate\Result\Collection */
+$results = $this->results;
+
+echo json_encode(array(
+	"isValid" => $results->areValid(),
+	"user" => $user->toArray(),
+	"errors" => $results->getErrors()->toArray()
+));

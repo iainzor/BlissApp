@@ -1,0 +1,7 @@
+<?php
+/* @var $user \Users\User */
+$user = $this->user;
+
+echo json_encode(array(
+	"user" => isset($user) ? $user->toArray() : null
+));

@@ -1,0 +1,5 @@
+<?php
+/* @var $users \Users\Collection */
+$users = $this->users;
+
+echo json_encode(isset($users) ? $users->toArray() : array());

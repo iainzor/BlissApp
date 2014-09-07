@@ -1,0 +1,22 @@
+<?php
+use Bliss\Console;
+
+/* @var \Exception $exception */
+$exception = $this->getAttribute("exception");
+$config = $this->application->config();
+
+$data = array(
+	"result" => "error",
+	"code" => 500,
+	"message" => $exception->getMessage()
+);
+
+if ($config->errorHandler->showErrorTrace === true) {
+	$data["trace"] = $exception->getTrace();
+}
+
+if ($config->errorHandler->showConsole === true) {
+	$data["console"] = Console::toArray();
+}
+
+echo json_encode($data);

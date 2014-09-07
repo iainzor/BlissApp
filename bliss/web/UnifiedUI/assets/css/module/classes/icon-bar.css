@@ -1,0 +1,27 @@
+.icon-bar {
+	display: block;
+	height: 4px;
+	min-width: 22px;
+	margin-bottom: 4px;
+	background-color: #333;
+	border-radius: 2px;
+	opacity: .75;
+}
+.icon-bar:last-child {
+	margin-bottom: 0;
+}
+
+li.active > a > .icon-bar,
+li.open > a > .icon-bar {
+	opacity: 1;
+}
+
+.btn-sm > .icon-bar {
+	min-width: 15px;
+	height: 2px;
+	margin-bottom: 2px;
+}
+
+.btn-sm > .icon-bar:first-child {
+	margin-top: 2px;
+}

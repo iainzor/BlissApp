@@ -1,0 +1,18 @@
+.theme-dark .dropdown-menu {
+	background-color: #222;
+	color: #ccc;
+}
+	.theme-dark .dropdown-menu > li > a {
+		color: #4cf;
+	}
+	.theme-dark .dropdown-menu > li > a:hover {
+		background-color: #333;
+		color: #fff;
+	}
+	.theme-dark .dropdown-menu > li.divider {
+		margin: 5px 0;
+		background-color: #333;
+	}
+	.theme-dark .dropdown-menu > li.nav-header {
+		border-color: #333;
+	}

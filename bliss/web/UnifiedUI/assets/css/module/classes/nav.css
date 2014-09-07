@@ -1,0 +1,24 @@
+.nav > li > a:hover,
+.nav > li:hover > a,
+.nav > li.open > a,
+.nav > li.open > a:hover {
+	background-color: rgba(0,0,0,.05);
+}
+.nav > li.active > a {
+	background-color: #2790b0;
+	color: #fff;
+}
+
+
+.nav > li.active h1,
+.nav > li.active h2,
+.nav > li.active h3 {
+	color: #fff;
+}
+	.nav > li.active h1 small,
+	.nav > li.active h2 small,
+	.nav > li.active h3 small,
+	.nav > li.active .text-muted {
+		color: #ddd;
+	}
+	
